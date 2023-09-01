@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/home', function () {
     return view('home');
 });
+
+Route::get('userlevels', 'App\Http\Controllers\UserlevelController@data');
+
+Route::get('userlevels/add', 'App\Http\Controllers\UserlevelController@add');
+
+Route::post('userlevels', 'App\Http\Controllers\UserlevelController@addProcess');
+
+Route::get('userlevels/edit/{id}', 'App\Http\Controllers\UserlevelController@edit');
+
+Route::patch('userlevels/{id}', 'App\Http\Controllers\UserlevelController@editProcess');
+
+Route::delete('userlevels/{id}', 'App\Http\Controllers\UserlevelController@delete');
