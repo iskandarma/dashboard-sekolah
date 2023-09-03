@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id('id_barang');
-            $table->bigInteger('id_user')->unsigned();
+            $table->foreignId('id_userlevel')->constrained('userlevels')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('id_kategori');
             $table->string('nama_barang',100);
             $table->integer('stok');
