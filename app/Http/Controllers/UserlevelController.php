@@ -25,6 +25,7 @@ class UserlevelController extends Controller
             'desc' => 'required',
         ],[
             'name.required' => 'Nama Level harus diisi',
+            'name.min' => 'Nama Level minimal harus 2 karakter',
             'desc.required' => 'Keterangan harus diisi' 
         ]);
 
@@ -48,6 +49,7 @@ class UserlevelController extends Controller
             'desc' => 'required',
         ],[
             'name.required' => 'Nama Level harus diisi',
+            'name.min' => 'Nama Level minimal harus 2 karakter',
             'desc.required' => 'Keterangan harus diisi' 
         ]);
 
