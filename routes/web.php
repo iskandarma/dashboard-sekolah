@@ -1,7 +1,8 @@
-<?php
+s<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,7 @@ Route::get('userlevels/edit/{id}', 'App\Http\Controllers\UserlevelController@edi
 Route::patch('userlevels/{id}', 'App\Http\Controllers\UserlevelController@editProcess');
 
 Route::delete('userlevels/{id}', 'App\Http\Controllers\UserlevelController@delete');
+
+Route::resource('kategoris', KategoriController::class);
 
 Route::resource('barangs', BarangController::class);

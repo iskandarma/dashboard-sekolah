@@ -42,6 +42,9 @@
                         <a href="{{ url('userlevels') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>User</a>
                     </li>
                     <li>
+                        <a href="{{ url('kategoris') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Kategori</a>
+                    </li>
+                    <li>
                         <a href="{{ url('barangs') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Barang</a>
                     </li>
                 </ul>
