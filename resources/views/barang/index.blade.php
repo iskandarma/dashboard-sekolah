@@ -72,7 +72,7 @@
                                         <a href="{{ url("barangs/$item->id") }}" class="btn btn-warning btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>    
-                                        <a href="{{ url("barangs/edit/$item->id") }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ url("barangs/$item->id/edit") }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                         </a>    
                                         <form action="{{ url('barangs/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Yakin mau hapus data?')">

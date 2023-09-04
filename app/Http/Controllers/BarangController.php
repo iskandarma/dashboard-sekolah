@@ -75,9 +75,11 @@ class BarangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Barang $barang)
+    public function edit(string $id)
     {
         //
+        $barangs = DB::table('barangs')->where('id', $id)->first();
+        return view('barang.edit', compact('barangs'));
     }
 
     /**
