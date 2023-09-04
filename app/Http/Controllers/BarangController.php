@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BarangController extends Controller
 {
@@ -22,7 +23,7 @@ class BarangController extends Controller
      */
     public function create()
     {
-        //
+        return view ('barang.create');
     }
 
     /**
@@ -30,7 +31,37 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2',
+            'user' => 'required',
+            'category' => 'required',
+            'stock' => 'required',
+            'funding' => 'required',
+            'year' => 'required',
+            'desc' => 'required'
+            
+        ],[
+            'name.required' => 'Nama Barang harus diisi',
+            'name.min' => 'Nama Barang minimal harus 2 karakter',
+            'user.required' => 'User harus diisi',
+            'desc.required' => 'Keterangan harus diisi', 
+            'category.required' => 'Kategori harus diisi', 
+            'stock.required' => 'Stok harus diisi', 
+            'funding.required' => 'Pendanaan harus diisi', 
+            'year.required' => 'Tahun harus diisi' 
+        ]);
+
+        DB::table('barangs')->insert([
+            'nama_barang' => $request->name,
+            'id_userlevel' => $request->user,
+            'id_kategori' => $request->category,
+            'stok' => $request->stock,
+            'pendanaan' => $request->funding,
+            'tahun' => $request->year,
+            'harga' => $request->price,
+            'deskripsi' => $request->desc
+        ]);
+        return redirect('barangs')->with('status', 'Barang berhasil ditambah!');
     }
 
     /**
