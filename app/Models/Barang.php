@@ -11,4 +11,9 @@ class Barang extends Model {
     {
         return $this->belongsTo(Userlevel::class,'id_userlevel','id');
     }
+
+    public function kategori(): BelongsTo 
+    {
+        return $this->belongsTo(Kategori::class,'id_kategori','id');
+    }
 }

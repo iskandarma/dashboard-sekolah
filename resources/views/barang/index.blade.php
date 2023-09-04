@@ -52,9 +52,9 @@
                             <tr>
                                 <th>No.</th>
                                 <th>Nama</th>
-                                <th>Kategori</th>
                                 <th>Deskripsi</th>
                                 <th>Stok</th>
+                                <th>Kategori</th>
                                 <th>Dibuat Oleh</th>
                                 <th></th>
                             </tr>
@@ -64,11 +64,14 @@
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
                                     <td>{{ $item -> nama_barang }}</td>
-                                    <td>{{ $item -> id_kategori }}</td>
                                     <td>{{ $item -> deskripsi }}</td>
                                     <td>{{ $item -> stok }}</td>
+                                    <td>{{ $item -> kategori->desc }}</td>
                                     <td>{{ $item -> userlevel->name }}</td>
                                     <td class="text-center">
+                                        <a href="{{ url("barangs/$item->id") }}" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-eye"></i>
+                                        </a>    
                                         <a href="{{ url("barangs/edit/$item->id") }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                         </a>    
