@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KategoriController extends Controller
 {
@@ -21,7 +22,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        //
+        return view ('kategori.create');
     }
 
     /**
@@ -30,6 +31,20 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required|min:2',
+            'desc' => 'required',
+        ],[
+            'name.required' => 'Nama Kategori harus diisi',
+            'name.min' => 'Nama Kategori minimal harus 2 karakter',
+            'desc.required' => 'Keterangan harus diisi' 
+        ]);
+
+        DB::table('kategoris')->insert([
+            'name' => $request->name,
+            'desc' => $request->desc
+        ]);
+        return redirect('kategoris')->with('status', 'Kategori berhasil ditambah!');
     }
 
     /**
@@ -45,7 +60,8 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kategoris = DB::table('kategoris')->where('id', $id)->first();
+        return view('kategori.edit', compact('kategoris'));
     }
 
     /**
@@ -54,6 +70,20 @@ class KategoriController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'name' => 'required|min:2',
+            'desc' => 'required',
+        ],[
+            'name.required' => 'Nama Kategori harus diisi',
+            'name.min' => 'Nama Kategori minimal harus 2 karakter',
+            'desc.required' => 'Keterangan harus diisi' 
+        ]);
+
+        DB::table('kategoris')->where('id', $id)->update([
+            'name' => $request->name,
+            'desc' => $request->desc
+        ]);
+        return redirect('kategoris')->with('status', 'Kategori berhasil diubah!');
     }
 
     /**
@@ -61,6 +91,7 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deleted = DB::table('kategoris')->where('id', $id)->delete();
+        return redirect('kategoris')->with('status', 'Kategori berhasil dihapus!');
     }
 }

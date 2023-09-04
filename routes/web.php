@@ -31,6 +31,8 @@ Route::patch('userlevels/{id}', 'App\Http\Controllers\UserlevelController@editPr
 
 Route::delete('userlevels/{id}', 'App\Http\Controllers\UserlevelController@delete');
 
+Route::get('kategoris/add', 'App\Http\Controllers\UserlevelController@add');
+
 Route::resource('kategoris', KategoriController::class);
 
 Route::resource('barangs', BarangController::class);
