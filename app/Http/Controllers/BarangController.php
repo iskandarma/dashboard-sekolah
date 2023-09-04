@@ -12,7 +12,9 @@ class BarangController extends Controller
      */
     public function index()
     {
-        return view('barang/index');
+        $barangs = Barang::all();
+        // return $barangs;
+        return view('barang/index', compact('barangs'));
     }
 
     /**

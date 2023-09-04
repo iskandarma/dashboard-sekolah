@@ -41,7 +41,7 @@
                         <strong>Data Barang</strong>
                     </div>
                     <div class="pull-right">
-                        <a href="{{ url('userlevels/add') }}" class="btn btn-success btn-sm">
+                        <a href="{{ url('barangs/add') }}" class="btn btn-success btn-sm">
                             <i class="fa fa-plus"></i> Add
                         </a>
                     </div>
@@ -55,20 +55,24 @@
                                 <th>Kategori</th>
                                 <th>Deskripsi</th>
                                 <th>Stok</th>
+                                <th>Dibuat Oleh</th>
                                 <th></th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
-                            @foreach ($userlevels as $item)
+                        <tbody>
+                            @foreach ($barangs as $item)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $item -> name }}</td>
-                                    <td>{{ $item -> desc }}</td>
+                                    <td>{{ $item -> nama_barang }}</td>
+                                    <td>{{ $item -> id_kategori }}</td>
+                                    <td>{{ $item -> deskripsi }}</td>
+                                    <td>{{ $item -> stok }}</td>
+                                    <td>{{ $item -> userlevel->name }}</td>
                                     <td class="text-center">
-                                        <a href="{{ url("userlevels/edit/$item->id") }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ url("barangs/edit/$item->id") }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                         </a>    
-                                        <form action="{{ url('userlevels/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Yakin mau hapus data?')">
+                                        <form action="{{ url('barangs/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Yakin mau hapus data?')">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-danger btn-sm">
@@ -78,7 +82,7 @@
                                     </td>
                                 </tr>    
                             @endforeach
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>

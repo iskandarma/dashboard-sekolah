@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Barang extends Model
-{
-    use HasFactory;
+class Barang extends Model {
+
+    public function userlevel(): BelongsTo 
+    {
+        return $this->belongsTo(Userlevel::class,'id_userlevel','id');
+    }
 }
