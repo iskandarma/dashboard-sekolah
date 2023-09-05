@@ -85,9 +85,36 @@ class BarangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Barang $barang)
+    public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|min:2',
+            'category' => 'required',
+            'stock' => 'required',
+            'funding' => 'required',
+            'year' => 'required',
+            'desc' => 'required'
+            
+        ],[
+            'name.required' => 'Nama Barang harus diisi',
+            'name.min' => 'Nama Barang minimal harus 2 karakter',
+            'desc.required' => 'Keterangan harus diisi', 
+            'category.required' => 'Kategori harus diisi', 
+            'stock.required' => 'Stok harus diisi', 
+            'funding.required' => 'Pendanaan harus diisi', 
+            'year.required' => 'Tahun harus diisi' 
+        ]);
+
+        DB::table('barangs')->where('id', $id)->update([
+            'nama_barang' => $request->name,
+            'id_kategori' => $request->category,
+            'stok' => $request->stock,
+            'pendanaan' => $request->funding,
+            'tahun' => $request->year,
+            'harga' => $request->price,
+            'deskripsi' => $request->desc
+        ]);
+        return redirect('barangs')->with('status', 'Barang berhasil diubah!');
     }
 
     /**
