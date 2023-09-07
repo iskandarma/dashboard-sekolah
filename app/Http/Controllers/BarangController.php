@@ -120,8 +120,9 @@ class BarangController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Barang $barang)
+    public function destroy(string $id)
     {
-        //
+        $deleted = DB::table('barangs')->where('id', $id)->delete();
+        return redirect('barangs')->with('status', 'Barang berhasil dihapus!');
     }
 }
