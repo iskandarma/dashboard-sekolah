@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,7 +30,7 @@ class BarangController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required|min:2',
@@ -51,16 +52,27 @@ class BarangController extends Controller
             'year.required' => 'Tahun harus diisi' 
         ]);
 
-        DB::table('barangs')->insert([
-            'nama_barang' => $request->name,
-            'id_userlevel' => $request->user,
-            'id_kategori' => $request->category,
-            'stok' => $request->stock,
-            'pendanaan' => $request->funding,
-            'tahun' => $request->year,
-            'harga' => $request->price,
-            'deskripsi' => $request->desc
-        ]);
+        $barang = new Barang;
+        $barang->nama_barang = $request->name;
+        $barang->id_userlevel = $request->user;
+        $barang->id_kategori = $request->category;
+        $barang->stok = $request->stock;
+        $barang->pendanaan = $request->funding;
+        $barang->tahun = $request->year;
+        $barang->harga = $request->price;
+        $barang->deskripsi = $request->desc;
+        $barang->save();
+
+        // DB::table('barangs')->insert([
+        //     'nama_barang' => $request->name,
+        //     'id_userlevel' => $request->user,
+        //     'id_kategori' => $request->category,
+        //     'stok' => $request->stock,
+        //     'pendanaan' => $request->funding,
+        //     'tahun' => $request->year,
+        //     'harga' => $request->price,
+        //     'deskripsi' => $request->desc
+        // ]);
         return redirect('barangs')->with('status', 'Barang berhasil ditambah!');
     }
 
@@ -69,7 +81,11 @@ class BarangController extends Controller
      */
     public function show(Barang $barang)
     {
-        //
+        // $barang = Barang::find($id);
+        // $barang = Barang::where('id',$id)->get();
+        // $barang->makeHidden('updated_at');
+        // return $barang;
+        return view('barang/show', compact('barang'));
     }
 
     /**

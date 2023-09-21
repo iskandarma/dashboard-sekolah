@@ -9,6 +9,8 @@ class Barang extends Model {
     
     public $timestamps = false;
 
+    protected $hidden = ['created_at'];
+
     public function userlevel(): BelongsTo 
     {
         return $this->belongsTo(Userlevel::class,'id_userlevel','id');
