@@ -54,35 +54,40 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Kategori Barang</label>
-                                    <input type="text" name="category" class="form-control @error('category') is-invalid @enderror" value="{{ old('category') }}" autofocus>
-                                    @error('category')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
+                                    <select name="category" class="form-control @error('category') is-invalid @enderror">
+                                        <option value="">- Pilih -</option>  
+                                        @foreach ($kategoris as $item)
+                                            <option value="{{ $item->id }}" {{ old('category')==$item->id ? 'selected' : null }}>{{ $item->desc }}</option>  
+                                        @endforeach
+                                    </select>
+                                        @error('category')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Stok Barang</label>
-                                    <input type="number" name="stock" class="form-control @error('stock') is-invalid @enderror" value="{{ old('stock') }}" autofocus>
-                                    @error('category')
+                                    <input type="number" name="stock" class="form-control @error('stock') is-invalid @enderror" value="{{ old('stock') }}">
+                                    @error('stock')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Pendanaan</label>
-                                    <input type="text" name="funding" class="form-control @error('funding') is-invalid @enderror" value="{{ old('funding') }}" autofocus>
+                                    <input type="text" name="funding" class="form-control @error('funding') is-invalid @enderror" value="{{ old('funding') }}">
                                     @error('funding')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Tahun Pendanaan</label>
-                                    <input type="number" name="year" class="form-control @error('year') is-invalid @enderror" value="{{ old('year') }}" autofocus>
+                                    <input type="number" name="year" class="form-control @error('year') is-invalid @enderror" value="{{ old('year') }}">
                                     @error('year')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Harga Satuan</label>
-                                    <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}" autofocus>
+                                    <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
                                     @error('price')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

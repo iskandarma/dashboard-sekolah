@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Kategori;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,8 @@ class BarangController extends Controller
      */
     public function create()
     {
-        return view ('barang.create');
+        $kategoris = Kategori::all();
+        return view ('barang.create', compact('kategoris'));
     }
 
     /**
@@ -52,18 +54,20 @@ class BarangController extends Controller
             'year.required' => 'Tahun harus diisi' 
         ]);
 
-        $barang = new Barang;
-        $barang->nama_barang = $request->name;
-        $barang->id_userlevel = $request->user;
-        $barang->id_kategori = $request->category;
-        $barang->stok = $request->stock;
-        $barang->pendanaan = $request->funding;
-        $barang->tahun = $request->year;
-        $barang->harga = $request->price;
-        $barang->deskripsi = $request->desc;
-        $barang->save();
+        // Cara 1
+        // $barang = new Barang;
+        // $barang->nama_barang = $request->name;
+        // $barang->id_userlevel = $request->user;
+        // $barang->id_kategori = $request->category;
+        // $barang->stok = $request->stock;
+        // $barang->pendanaan = $request->funding;
+        // $barang->tahun = $request->year;
+        // $barang->harga = $request->price;
+        // $barang->deskripsi = $request->desc;
+        // $barang->save();
 
-        // DB::table('barangs')->insert([
+        // Cara 2 : mass assignment
+        // Barang::create([
         //     'nama_barang' => $request->name,
         //     'id_userlevel' => $request->user,
         //     'id_kategori' => $request->category,
@@ -71,8 +75,27 @@ class BarangController extends Controller
         //     'pendanaan' => $request->funding,
         //     'tahun' => $request->year,
         //     'harga' => $request->price,
-        //     'deskripsi' => $request->desc
+        //     'deskripsi' => $request->desc,
         // ]);
+        // $barang->save();
+
+        // Cara 3 : quick mass assigment
+        // Syarat -> field tabel dan nama inputan di html harus sama
+        // Barang::create($request->all());
+
+        // Cara 4 : gabungan 
+        $barang = new Barang([
+            'nama_barang' => $request->name,
+            'id_kategori' => $request->category,
+            'stok' => $request->stock,
+            'pendanaan' => $request->funding,
+            'tahun' => $request->year,
+            'harga' => $request->price,
+            'deskripsi' => $request->desc
+        ]);
+        $barang->id_userlevel = $request->user;
+        $barang->save();
+
         return redirect('barangs')->with('status', 'Barang berhasil ditambah!');
     }
 
@@ -140,5 +163,11 @@ class BarangController extends Controller
     {
         $deleted = DB::table('barangs')->where('id', $id)->delete();
         return redirect('barangs')->with('status', 'Barang berhasil dihapus!');
+    }
+
+    public function getjumlahbarang(string $id)
+    {
+        $barang = Barang::select('stok')->where('id',$id)->first();
+        return $barang;
     }
 }

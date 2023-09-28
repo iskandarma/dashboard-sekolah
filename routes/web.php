@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
@@ -36,3 +37,7 @@ Route::get('kategoris/add', 'App\Http\Controllers\UserlevelController@add');
 Route::resource('kategoris', KategoriController::class);
 
 Route::resource('barangs', BarangController::class);
+
+Route::resource('submits', SubmitController::class);
+
+Route::get('jumlahbarang/{id}', 'App\Http\Controllers\BarangController@getjumlahbarang');

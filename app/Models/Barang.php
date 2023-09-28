@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Barang extends Model {
     
-    public $timestamps = false;
-
+    /**
+     * $fillable adalah kolom yang dapat diisi
+     * $guarded adalah kolom yang tidak dapat diisi atau kebalikan dari fillable
+     * fillable dan guarded digunakan salah satu aja
+     *  */ 
+    // protected $fillable = ['name'];
+    protected $guarded = [];
     protected $hidden = ['created_at'];
 
     public function userlevel(): BelongsTo 
