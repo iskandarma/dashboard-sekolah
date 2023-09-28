@@ -20,6 +20,10 @@ Route::get('/home', function () {
     return view('home');
 });
 
+Route::get('/login', function(){
+    return view ('auth/login');
+});
+
 Route::get('userlevels', 'App\Http\Controllers\UserlevelController@data');
 
 Route::get('userlevels/add', 'App\Http\Controllers\UserlevelController@add');
