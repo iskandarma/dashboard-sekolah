@@ -16,13 +16,11 @@ use App\Http\Controllers\KategoriController;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/', function () {
+    return view('dashboard');
 });
 
-Route::get('/login', function(){
-    return view ('auth/login');
-});
+Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
 Route::get('userlevels', 'App\Http\Controllers\UserlevelController@data');
 
