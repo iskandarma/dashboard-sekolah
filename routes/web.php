@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +23,18 @@ Route::get('/', function () {
     return view('layouts/web/index');
 });
 
-Route::get('/home', function () {
-    return view('layouts/dashboard/index');
+
+Route::middleware('auth')->group(function() {
+    Route::get('/home', function () {
+        return view('layouts/dashboard/index');
+    })->name('home')->middleware('user');
+
 });
 
-Route::get('/login', function () {
-    return view('auth/login');
-});
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login-authenticating', [AuthController::class, 'authenticating'])->name('login-authenticating');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
 
 // Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
