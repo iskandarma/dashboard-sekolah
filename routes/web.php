@@ -24,10 +24,10 @@ Route::get('/', function () {
 });
 
 
-Route::middleware('auth')->group(function() {
+Route::middleware('user')->group(function() {
     Route::get('/home', function () {
         return view('layouts/dashboard/index');
-    })->name('home')->middleware('user');
+    })->name('home');
 
 });
 
