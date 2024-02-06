@@ -7,16 +7,17 @@
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
-
+      </li>
+      <!-- End Dashboard Nav -->
+      @if (Auth::user()->role == 'Admin' || Auth::user()->role == 'Guru')
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Manajemen Siswa</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-people-fill"></i><span>Manajemen Siswa</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Tambah User/Siswa</span>
+              <i class="bi bi-circle"></i><span>Kelola Data User/Siswa</span>
             </a>
           </li>
           <li>
@@ -26,23 +27,11 @@
           </li>
         </ul>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Manajemen Role</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Ubah Role User</span>
-            </a>
-          </li>
-        </ul>
-      </li>
+      
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Manajemen Konten</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-file-earmark-richtext"></i><span>Manajemen Konten</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -52,13 +41,32 @@
           </li>
         </ul>
       </li>
+      @endif
 
+      @if(Auth::user()->role == 'SuperAdmin')
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-person-gear"></i><span>Manajemen Role</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="components-alerts.html">
+              <i class="bi bi-circle"></i><span>Ubah Role User</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      @endif
+
+
+      @if (Auth::user()->role == 'Siswa')
       <li class="nav-item">
         <a class="nav-link collapsed" href="#">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-person-vcard"></i>
           <span>PKL/Magang</span>
         </a>
       </li>
+      @endif
 
       <!-- End Blank Page Nav -->
 

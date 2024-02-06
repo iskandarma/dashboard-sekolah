@@ -16,9 +16,10 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role == 'Admin')  {
+        if (Auth::check() )  {
             return $next($request);
         }
         return back();
     }
+    // && Auth::user()->role == 'Admin'
 }
