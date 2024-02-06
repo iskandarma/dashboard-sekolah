@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class UserMiddleware
+class GuruMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() )  {
+        if (Auth::user()->role == 'Guru') {
             return $next($request);
         }
-        return back();
+        return to_route('login');
     }
 }

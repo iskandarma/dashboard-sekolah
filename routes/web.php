@@ -5,6 +5,7 @@ use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\UserManagementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,7 +29,16 @@ Route::middleware('user')->group(function() {
     Route::get('/home', function () {
         return view('layouts/dashboard/index');
     })->name('home');
+    Route::middleware('admin')->group(function () {
+        Route::resource('manajemen-user', UserManagementController::class);
+        // Route::resource('inventaris', UserController::class);
+    });
+    Route::middleware('guru')->group(function () {
 
+    });
+    Route::middleware('siswa')->group(function () {
+
+    });
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
