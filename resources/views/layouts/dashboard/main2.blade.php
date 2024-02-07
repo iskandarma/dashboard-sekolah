@@ -3,10 +3,15 @@
     <div class="pagetitle">
         <h1>Manajemen Siswa</h1>
         <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
-                <li class="breadcrumb-item active">Manajemen Siswa</li>
-            </ol>
+            <div class="d-flex justify-content-between">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ url('home') }}">Home</a></li>
+                    <li class="breadcrumb-item active">Manajemen Siswa</li>
+                </ol>
+                @if (auth()->user()->hasRole('admin'))
+                    <button type="submit" class="btn btn-primary">+ Tambah Siswa</button>
+                @endif
+            </div>
         </nav>
     </div><!-- End Page Title -->
 
@@ -43,11 +48,14 @@
                                             <td>Brandon Jacob</td>
                                             <td>Designer</td>
                                             <td>28</td>
-                                            <td> <form action="" method="">
+                                            <td>
+                                                <form action="" method="">
                                                     @csrf
                                                     <a class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-                                               
-                                                    <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    @if (auth()->user()->hasRole('admin'))
+                                                        <button class="btn btn-danger"><i
+                                                                class="bi bi-trash"></i></button>
+                                                    @endif
                                                 </form>
                                             </td>
                                         </tr>

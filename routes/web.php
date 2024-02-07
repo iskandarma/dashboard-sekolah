@@ -32,22 +32,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/admin', function () {
-    return "hello admin";
-})->middleware(['auth', 'verified', 'role:admin']);
+// Route::get('/admin', function () {
+//     return "hello admin";
+// })->middleware(['auth', 'verified', 'role:admin']);
+
 Route::get('/login', function () {
     return view('auth/login');
 });
 Route::get('/manajemen', function () {
     return view('layouts/dashboard/manajemen_siswa');
-})->name('manajemen');
+})->name('manajemen')->middleware(['auth', 'verified', 'role:admin|guru']);
 
-Route::get('/user', function () {
-    return "hello user";
-})->middleware(['auth', 'verified', 'role:user']);
+// Route::get('/user', function () {
+//     return "hello user";
+// })->middleware(['auth', 'verified', 'role:user']);
 
 Route::get('/tulisan', function () {
     return "bisa lihat user";
-})->middleware(['auth', 'verified', 'permission:lihat-user']);
+})->middleware(['auth', 'verified', 'permission:tambah-user']);
 
 require __DIR__.'/auth.php';

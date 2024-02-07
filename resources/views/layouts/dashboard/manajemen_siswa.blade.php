@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - RPL</title>
+    <title>home - RPL</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('dashboard/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('dashboard/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('home/img/favicon.png') }}" rel="icon">
+    <link href="{{ asset('home/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -20,16 +20,16 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="{{ asset('dashboard/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/vendor/quill/quill.snow.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('dashboard/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('home/css/style.css') }}" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: NiceAdmin
@@ -62,17 +62,17 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('dashboard/vendor/apexcharts/apexcharts.min.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/chart.js/chart.umd.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/echarts/echarts.min.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/quill/quill.min.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/simple-datatables/simple-datatables.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/tinymce/tinymce.min.js') }}"></script>
-    <script src="{{ asset('dashboard/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ asset('home/vendor/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('home/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('home/vendor/chart.js/chart.umd.js') }}"></script>
+    <script src="{{ asset('home/vendor/echarts/echarts.min.js') }}"></script>
+    <script src="{{ asset('home/vendor/quill/quill.min.js') }}"></script>
+    <script src="{{ asset('home/vendor/simple-datatables/simple-datatables.js') }}"></script>
+    <script src="{{ asset('home/vendor/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('home/vendor/php-email-form/validate.js') }}"></script>
 
     <!-- Template Main JS File -->
-    <script src="{{ asset('dashboard/js/main.js') }}"></script>
+    <script src="{{ asset('home/js/main.js') }}"></script>
 
 </body>
 
