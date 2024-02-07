@@ -76,7 +76,7 @@
                                                 <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="email" name="email" class="form-control"
                                                     id="yourUsername" required>
-                                                <div class="invalid-feedback">Please enter your username.</div>
+                                                <div class="invalid-feedback">Please enter your Email.</div>
                                             </div>
                                         </div>
 
@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Don't have account? <a
-                                                    href="pages-register.html">Create an account</a></p>
+                                                    href="{{ route('register') }}">Create an account</a></p>
                                         </div>
                                     </form>
 

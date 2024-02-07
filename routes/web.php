@@ -40,4 +40,8 @@ Route::get('/user', function () {
     return "hello user";
 })->middleware(['auth', 'verified', 'role:user']);
 
+Route::get('/tulisan', function () {
+    return "bisa lihat user";
+})->middleware(['auth', 'verified', 'permission:lihat-user']);
+
 require __DIR__.'/auth.php';
