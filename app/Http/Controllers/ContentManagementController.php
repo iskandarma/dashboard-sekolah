@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UserManagementController extends Controller
+class ContentManagementController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('layouts/main_content/manajemen_siswa');
+        return view('layouts/main_content/konten_manajemen');
     }
 
     /**

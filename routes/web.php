@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\SubmitController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BarangController;
-use App\Http\Controllers\DudiController;
-use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\UserManagementController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DudiController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\SubmitController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\ContentManagementController;
+use App\Http\Controllers\InternshipManagementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,21 +29,18 @@ Route::get('/', function () {
 });
 
 
-Route::middleware('user')->group(function() {
+Route::middleware('auth')->group(function() {
     Route::get('/home', function () {
         return view('layouts/dashboard/index');
     })->name('home');
 
-    Route::group(['middleware' => ['admin','guru']],function () {
-        Route::get('/siswa', function () {
-            return view('layouts/main_content/manajemen_siswa');
-        })->name('siswa');
+    Route::middleware('student_access')->group(function() {
+         Route::resource('/siswa', UserManagementController::class);
+         Route::resource('/konten', ContentManagementController::class);
 
-        });
-   
-        Route::get('/pkl', function () {
-            return view('layouts/main_content/pkl');
-        })->name('pkl');
+    });
+//    Close Rute
+        Route::resource('/pkl', InternshipManagementController::class);
 
 });
 

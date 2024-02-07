@@ -16,12 +16,12 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{ route('siswa.index') }}">
               <i class="bi bi-circle"></i><span>Kelola Data User/Siswa</span>
             </a>
           </li>
           <li>
-            <a href="components-alerts.html">
+            <a href="#">
               <i class="bi bi-circle"></i><span>Cetak Kartu</span>
             </a>
           </li>
@@ -35,12 +35,12 @@
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Kelola Data User/Siswa</span>
+              <i class="bi bi-circle"></i><span>Kelola Barang</span>
             </a>
           </li>
           <li>
             <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Cetak Kartu</span>
+              <i class="bi bi-circle"></i><span>Cetak Laporan</span>
             </a>
           </li>
         </ul>
@@ -52,7 +52,7 @@
         </a>
         <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{ route('konten.index') }}">
               <i class="bi bi-circle"></i><span>Tambah Konten</span>
             </a>
           </li>
@@ -66,12 +66,12 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{ route('siswa.index') }}">
               <i class="bi bi-circle"></i><span>Kelola Data User/Siswa</span>
             </a>
           </li>
           <li>
-            <a href="components-alerts.html">
+            <a href="#">
               <i class="bi bi-circle"></i><span>Cetak Kartu</span>
             </a>
           </li>
@@ -84,7 +84,7 @@
         </a>
         <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
+            <a href="{{ route('konten.index') }}">
               <i class="bi bi-circle"></i><span>Tambah Konten</span>
             </a>
           </li>
@@ -109,7 +109,7 @@
 
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('pkl.index') }}">
           <i class="bi bi-person-vcard"></i>
           <span>PKL/Magang</span>
         </a>
