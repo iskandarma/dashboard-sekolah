@@ -27,6 +27,9 @@ Route::get('/home', function () {
 Route::get('/login', function () {
     return view('auth/login');
 });
+Route::get('/manajemen', function () {
+    return view('layouts/dashboard/manajemen_siswa');
+})->name('manajemen');
 
 // Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
