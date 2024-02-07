@@ -28,6 +28,10 @@ Route::get('/', function () {
     return view('layouts/web/index');
 });
 
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login-authenticating', [AuthController::class, 'authenticating'])->name('login-authenticating');
+});
 
 Route::middleware('auth')->group(function() {
     Route::get('/home', function () {
@@ -35,18 +39,13 @@ Route::middleware('auth')->group(function() {
     })->name('home');
 
     Route::middleware('student_access')->group(function() {
-         Route::resource('/siswa', UserManagementController::class);
-         Route::resource('/konten', ContentManagementController::class);
-
+        Route::resource('/siswa', UserManagementController::class);
+        Route::resource('/konten', ContentManagementController::class);
     });
-//    Close Rute
-        Route::resource('/pkl', InternshipManagementController::class);
-
+    Route::resource('/pkl', InternshipManagementController::class);
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login-authenticating', [AuthController::class, 'authenticating'])->name('login-authenticating');
-Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
 // Route::get('/login', 'App\Http\Controllers\LoginController@index');
