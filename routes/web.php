@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\DudiController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\UserManagementController;
 use Illuminate\Http\Request;
@@ -29,16 +31,18 @@ Route::middleware('user')->group(function() {
     Route::get('/home', function () {
         return view('layouts/dashboard/index');
     })->name('home');
-    Route::middleware('admin')->group(function () {
-        Route::resource('manajemen-user', UserManagementController::class);
-        // Route::resource('inventaris', UserController::class);
-    });
-    Route::middleware('guru')->group(function () {
 
-    });
-    Route::middleware('siswa')->group(function () {
+    Route::group(['middleware' => ['admin','guru']],function () {
+        Route::get('/siswa', function () {
+            return view('layouts/main_content/manajemen_siswa');
+        })->name('siswa');
 
-    });
+        });
+   
+        Route::get('/pkl', function () {
+            return view('layouts/main_content/pkl');
+        })->name('pkl');
+
 });
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
