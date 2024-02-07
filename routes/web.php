@@ -48,7 +48,7 @@ Route::get('/manajemen', function () {
 // })->middleware(['auth', 'verified', 'role:user']);
 
 Route::get('/tulisan', function () {
-    return "bisa lihat user";
+    return "<h1>ini hanya bisa diakses admin untuk tambah user</h1>";
 })->middleware(['auth', 'verified', 'permission:tambah-user']);
 
 require __DIR__.'/auth.php';
