@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubmitController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\KategoriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,40 +17,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/web/index');
 });
 
-// Route::get('/main', function () {
-//     return view('dashboard.header');
-// });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/home', function () {
+    return view('layouts/dashboard/index');
 });
-
-// Route::get('/admin', function () {
-//     return "hello admin";
-// })->middleware(['auth', 'verified', 'role:admin']);
 
 Route::get('/login', function () {
     return view('auth/login');
 });
-Route::get('/manajemen', function () {
-    return view('layouts/dashboard/manajemen_siswa');
-})->name('manajemen')->middleware(['auth', 'verified', 'role:admin|guru']);
 
-// Route::get('/user', function () {
-//     return "hello user";
-// })->middleware(['auth', 'verified', 'role:user']);
+// Route::get('/login', 'App\Http\Controllers\LoginController@index');
 
-Route::get('/tulisan', function () {
-    return "<h1>ini hanya bisa diakses admin untuk tambah user</h1>";
-})->middleware(['auth', 'verified', 'permission:tambah-user']);
+// Route::get('userlevels', 'App\Http\Controllers\UserlevelController@data');
 
-require __DIR__.'/auth.php';
+// Route::get('userlevels/add', 'App\Http\Controllers\UserlevelController@add');
+
+// Route::post('userlevels', 'App\Http\Controllers\UserlevelController@addProcess');
+
+// Route::get('userlevels/edit/{id}', 'App\Http\Controllers\UserlevelController@edit');
+
+// Route::patch('userlevels/{id}', 'App\Http\Controllers\UserlevelController@editProcess');
+
+// Route::delete('userlevels/{id}', 'App\Http\Controllers\UserlevelController@delete');
+
+// Route::get('kategoris/add', 'App\Http\Controllers\UserlevelController@add');
+
+// Route::resource('kategoris', KategoriController::class);
+
+// Route::resource('barangs', BarangController::class);
+
+// Route::resource('submits', SubmitController::class);
+
+// Route::get('jumlahbarang/{id}', 'App\Http\Controllers\BarangController@getjumlahbarang');
