@@ -16,13 +16,17 @@ class Barang extends Model {
     protected $guarded = [];
     protected $hidden = ['created_at'];
 
-    public function userlevel(): BelongsTo 
-    {
-        return $this->belongsTo(Userlevel::class,'id_userlevel','id');
-    }
+    // public function userlevel(): BelongsTo 
+    // {
+    //     return $this->belongsTo(Userlevel::class,'id_userlevel','id');
+    // }
 
     public function kategori(): BelongsTo 
     {
         return $this->belongsTo(Kategori::class,'id_kategori','id');
+    }
+    public function peminjaman()
+    {
+        return $this->hasMany(Peminjaman::class);
     }
 }

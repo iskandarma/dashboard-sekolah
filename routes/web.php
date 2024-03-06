@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PeminjamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +45,16 @@ Route::get('/login', function () {
 Route::get('/manajemen', function () {
     return view('layouts/dashboard/manajemen_siswa');
 })->name('manajemen')->middleware(['auth', 'verified', 'role:admin|guru']);
+
+Route::get('/kelola-barang',[BarangController::class, 'index'])->name('barang')->middleware(['auth', 'verified', 'role:admin']);
+
+Route::get('/kategori-inventaris', [KategoriController::class, 'index'])->name('kategori-inventaris')->middleware(['auth', 'verified', 'role:admin']);
+
+Route::get('/riwayat-peminjaman',[PeminjamanController::class, 'index'] )->name('riwayat-peminjaman')->middleware(['auth', 'verified']);
+
+Route::get('/riwayat-pengembalian', function () {
+    return view('inventaris/rwyt_pengembalian/index');
+})->name('riwayat-pengembalian')->middleware(['auth', 'verified', 'role:admin|guru']);
 
 // Route::get('/user', function () {
 //     return "hello user";

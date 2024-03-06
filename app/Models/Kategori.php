@@ -7,4 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Kategori extends Model
 {
+    protected $fillable = [
+        'name'
+    ];
+
+    public function barang()
+    {
+        return $this->hasMany(Barang::class);
+    }
 }

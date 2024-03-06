@@ -53,12 +53,33 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-cart3"></i>
-                    <span>Inventaris</span>
+            <li class="nav-item" >
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-cart3"></i><span>Inventaris</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-            </li>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="components-alerts.html">
+                      <i class="bi bi-circle"></i><span>Kelola Barang</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="components-alerts.html">
+                      <i class="bi bi-circle"></i><span>Kelola Kategori</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="components-alerts.html">
+                      <i class="bi bi-circle"></i><span>Riwayat Peminjaman</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="components-alerts.html">
+                      <i class="bi bi-circle"></i><span>Riwayat Pengembalian</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="users-profile.html">
